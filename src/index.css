@@ -1,121 +1,123 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Indian Wedding Theme - Festive Design System */
+/* PraBhu Wedding Theme - Elegant Festive Design System */
 
 @layer base {
   :root {
-    /* Warm Ivory/Cream Base */
-    --background: 35 40% 97%;
-    --foreground: 15 30% 15%;
+    /* Soft Cream/White Base */
+    --background: 40 30% 96%;
+    --foreground: 20 25% 15%;
 
     /* Card surfaces */
-    --card: 35 50% 95%;
-    --card-foreground: 15 30% 15%;
+    --card: 40 40% 94%;
+    --card-foreground: 20 25% 15%;
 
-    --popover: 35 40% 97%;
-    --popover-foreground: 15 30% 15%;
+    --popover: 40 30% 96%;
+    --popover-foreground: 20 25% 15%;
 
     /* Rich Gold Primary */
-    --primary: 38 75% 55%;
-    --primary-foreground: 15 30% 10%;
+    --primary: 38 70% 50%;
+    --primary-foreground: 20 25% 10%;
 
     /* Soft Rose Secondary */
-    --secondary: 350 60% 92%;
-    --secondary-foreground: 350 60% 25%;
+    --secondary: 350 55% 90%;
+    --secondary-foreground: 350 50% 30%;
 
     /* Muted Tones */
-    --muted: 35 30% 90%;
-    --muted-foreground: 15 15% 45%;
+    --muted: 40 25% 88%;
+    --muted-foreground: 20 15% 40%;
 
     /* Festive Coral Accent */
-    --accent: 15 80% 60%;
-    --accent-foreground: 35 40% 97%;
+    --accent: 15 75% 55%;
+    --accent-foreground: 40 30% 96%;
 
     /* Deep Rose for Destructive */
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 35 40% 97%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 40 30% 96%;
 
-    --border: 35 30% 85%;
-    --input: 35 30% 85%;
-    --ring: 38 75% 55%;
+    --border: 40 25% 82%;
+    --input: 40 25% 82%;
+    --ring: 38 70% 50%;
 
     --radius: 1rem;
 
     /* Custom Wedding Colors */
-    --gold: 38 75% 55%;
-    --gold-light: 40 70% 75%;
-    --gold-dark: 35 80% 40%;
-    --rose: 350 60% 55%;
-    --rose-light: 350 60% 85%;
-    --rose-dark: 350 65% 40%;
-    --coral: 15 80% 60%;
-    --cream: 35 50% 95%;
-    --ivory: 35 40% 97%;
-    --marigold: 45 90% 55%;
-    --deep-red: 0 70% 35%;
+    --gold: 38 70% 50%;
+    --gold-light: 42 65% 70%;
+    --gold-dark: 35 75% 38%;
+    --rose: 350 55% 55%;
+    --rose-light: 350 55% 82%;
+    --rose-dark: 350 60% 40%;
+    --coral: 15 75% 55%;
+    --cream: 40 40% 94%;
+    --ivory: 40 30% 96%;
+    --marigold: 45 85% 52%;
+    --deep-red: 0 65% 35%;
+    --soft-pink: 340 60% 75%;
+    --soft-blue: 210 50% 70%;
 
     /* Gradients */
-    --gradient-festive: linear-gradient(135deg, hsl(38, 75%, 55%) 0%, hsl(15, 80%, 60%) 50%, hsl(350, 60%, 55%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(40, 70%, 75%) 0%, hsl(38, 75%, 55%) 50%, hsl(35, 80%, 40%) 100%);
-    --gradient-sunset: linear-gradient(180deg, hsl(35, 50%, 95%) 0%, hsl(35, 60%, 90%) 50%, hsl(350, 60%, 92%) 100%);
-    --gradient-rose: linear-gradient(135deg, hsl(350, 60%, 85%) 0%, hsl(350, 60%, 55%) 100%);
+    --gradient-festive: linear-gradient(135deg, hsl(38, 70%, 50%) 0%, hsl(15, 75%, 55%) 50%, hsl(350, 55%, 55%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(42, 65%, 70%) 0%, hsl(38, 70%, 50%) 50%, hsl(35, 75%, 38%) 100%);
+    --gradient-overlay: linear-gradient(180deg, hsl(40, 30%, 98% / 0.65) 0%, hsl(40, 30%, 95% / 0.7) 100%);
+    --gradient-rose: linear-gradient(135deg, hsl(350, 55%, 82%) 0%, hsl(350, 55%, 55%) 100%);
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(15 30% 15% / 0.1);
-    --shadow-card: 0 8px 30px -8px hsl(38 75% 55% / 0.2);
-    --shadow-glow: 0 0 30px hsl(38 75% 55% / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(20 25% 15% / 0.08);
+    --shadow-card: 0 8px 30px -8px hsl(38 70% 50% / 0.18);
+    --shadow-glow: 0 0 30px hsl(38 70% 50% / 0.25);
 
-    --sidebar-background: 35 50% 95%;
-    --sidebar-foreground: 15 30% 15%;
-    --sidebar-primary: 38 75% 55%;
-    --sidebar-primary-foreground: 15 30% 10%;
-    --sidebar-accent: 350 60% 92%;
-    --sidebar-accent-foreground: 350 60% 25%;
-    --sidebar-border: 35 30% 85%;
-    --sidebar-ring: 38 75% 55%;
+    --sidebar-background: 40 40% 94%;
+    --sidebar-foreground: 20 25% 15%;
+    --sidebar-primary: 38 70% 50%;
+    --sidebar-primary-foreground: 20 25% 10%;
+    --sidebar-accent: 350 55% 90%;
+    --sidebar-accent-foreground: 350 50% 30%;
+    --sidebar-border: 40 25% 82%;
+    --sidebar-ring: 38 70% 50%;
   }
 
   .dark {
-    --background: 15 30% 8%;
-    --foreground: 35 40% 95%;
+    --background: 20 25% 8%;
+    --foreground: 40 30% 94%;
 
-    --card: 15 25% 12%;
-    --card-foreground: 35 40% 95%;
+    --card: 20 22% 12%;
+    --card-foreground: 40 30% 94%;
 
-    --popover: 15 25% 12%;
-    --popover-foreground: 35 40% 95%;
+    --popover: 20 22% 12%;
+    --popover-foreground: 40 30% 94%;
 
-    --primary: 38 75% 55%;
-    --primary-foreground: 15 30% 10%;
+    --primary: 38 70% 50%;
+    --primary-foreground: 20 25% 10%;
 
-    --secondary: 350 40% 20%;
-    --secondary-foreground: 350 60% 85%;
+    --secondary: 350 38% 22%;
+    --secondary-foreground: 350 55% 82%;
 
-    --muted: 15 20% 18%;
-    --muted-foreground: 35 20% 60%;
+    --muted: 20 18% 18%;
+    --muted-foreground: 40 18% 58%;
 
-    --accent: 15 70% 50%;
-    --accent-foreground: 35 40% 95%;
+    --accent: 15 65% 48%;
+    --accent-foreground: 40 30% 94%;
 
-    --destructive: 0 60% 45%;
-    --destructive-foreground: 35 40% 95%;
+    --destructive: 0 58% 45%;
+    --destructive-foreground: 40 30% 94%;
 
-    --border: 15 20% 20%;
-    --input: 15 20% 20%;
-    --ring: 38 75% 55%;
+    --border: 20 18% 22%;
+    --input: 20 18% 22%;
+    --ring: 38 70% 50%;
 
-    --sidebar-background: 15 25% 10%;
-    --sidebar-foreground: 35 40% 95%;
-    --sidebar-primary: 38 75% 55%;
-    --sidebar-primary-foreground: 15 30% 10%;
-    --sidebar-accent: 15 20% 18%;
-    --sidebar-accent-foreground: 35 40% 95%;
-    --sidebar-border: 15 20% 20%;
-    --sidebar-ring: 38 75% 55%;
+    --sidebar-background: 20 22% 10%;
+    --sidebar-foreground: 40 30% 94%;
+    --sidebar-primary: 38 70% 50%;
+    --sidebar-primary-foreground: 20 25% 10%;
+    --sidebar-accent: 20 18% 18%;
+    --sidebar-accent-foreground: 40 30% 94%;
+    --sidebar-border: 20 18% 22%;
+    --sidebar-ring: 38 70% 50%;
   }
 }
 
@@ -131,15 +133,14 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Poppins', sans-serif;
-    background: var(--gradient-sunset);
     min-height: 100vh;
   }
 }
 
 @layer components {
-  /* Festive Typography */
+  /* Elegant Typography */
   .font-display {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
   }
 
   .font-sans {
@@ -154,11 +155,40 @@
     background-clip: text;
   }
 
+  /* Hero Background with Image */
+  .hero-bg {
+    @apply relative min-h-screen w-full;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .hero-bg::before {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(180deg, hsl(40 30% 98% / 0.6) 0%, hsl(40 30% 95% / 0.65) 50%, hsl(40 30% 92% / 0.7) 100%);
+  }
+
+  /* Section Background with Image */
+  .section-bg {
+    @apply relative w-full;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .section-bg::before {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(180deg, hsl(40 30% 98% / 0.85) 0%, hsl(40 30% 96% / 0.9) 100%);
+  }
+
   /* Festive Card Styles */
   .card-festive {
     @apply relative overflow-hidden rounded-2xl;
-    background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--cream)) 100%);
+    background: linear-gradient(145deg, hsl(var(--card) / 0.95) 0%, hsl(var(--cream) / 0.9) 100%);
     box-shadow: var(--shadow-card);
+    backdrop-filter: blur(10px);
   }
 
   .card-festive::before {
@@ -172,25 +202,48 @@
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   /* Event Card */
   .event-card {
     @apply relative p-6 rounded-2xl transition-all duration-300;
-    background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--cream)) 100%);
+    background: linear-gradient(145deg, hsl(var(--card) / 0.95) 0%, hsl(var(--cream) / 0.9) 100%);
     box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(8px);
   }
 
   .event-card:active {
     transform: scale(0.98);
   }
 
+  /* Venue Card */
+  .venue-card {
+    @apply mt-4 p-4 rounded-xl;
+    background: hsl(var(--muted) / 0.5);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
   /* Countdown Styles */
   .countdown-box {
-    @apply flex flex-col items-center justify-center p-4 rounded-xl min-w-[70px];
-    background: linear-gradient(145deg, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.05) 100%);
-    border: 1px solid hsl(var(--primary) / 0.2);
+    @apply flex flex-col items-center justify-center p-3 md:p-4 rounded-xl min-w-[60px] md:min-w-[70px];
+    background: linear-gradient(145deg, hsl(var(--primary) / 0.12) 0%, hsl(var(--primary) / 0.04) 100%);
+    border: 1px solid hsl(var(--primary) / 0.18);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Continuous Bounce Animation for Countdown */
+  .countdown-bounce {
+    animation: countdown-bounce 0.6s ease-in-out infinite;
+  }
+
+  @keyframes countdown-bounce {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
   }
 
   /* Heart Button */
@@ -224,17 +277,17 @@
       var(--gradient-festive) border-box;
   }
 
-  /* Pulse animation for countdown */
+  /* Pulse animation for countdown glow */
   .countdown-pulse {
     animation: pulse-glow 2s ease-in-out infinite;
   }
 
   @keyframes pulse-glow {
     0%, 100% {
-      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.25);
     }
     50% {
-      box-shadow: 0 0 40px hsl(var(--primary) / 0.5);
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.45);
     }
   }
 
@@ -275,7 +328,7 @@
     }
   }
 
-  /* Fade in animation */
+  /* Fade in up animation */
   .fade-in-up {
     animation: fade-in-up 0.6s ease-out forwards;
     opacity: 0;
@@ -285,6 +338,22 @@
     from {
       opacity: 0;
       transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide in up animation for scroll reveal */
+  .slide-in-view {
+    animation: slide-in-view 0.7s ease-out forwards;
+  }
+
+  @keyframes slide-in-view {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
@@ -319,6 +388,30 @@
     content: '';
     @apply flex-1 h-px max-w-[100px];
     background: var(--gradient-festive);
+  }
+
+  /* Directions Button */
+  .directions-btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 4px 14px hsl(var(--primary) / 0.3);
+  }
+
+  .directions-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px hsl(var(--primary) / 0.4);
+  }
+
+  .directions-btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Logo styling */
+  .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
   }
 }
 

@@ -1,9 +1,13 @@
 import { PhotoGallery } from './PhotoGallery';
+import galleryBackground from '@/assets/couple-3.jpg';
 
 export const GallerySection = () => {
   return (
-    <section className="py-12 md:py-16">
-      <div className="max-w-5xl mx-auto">
+    <section 
+      className="section-bg py-12 md:py-16"
+      style={{ backgroundImage: `url(${galleryBackground})` }}
+    >
+      <div className="relative z-10 max-w-5xl mx-auto">
         {/* Section title */}
         <div className="text-center mb-8 px-4">
           <span className="section-emoji">📸</span>

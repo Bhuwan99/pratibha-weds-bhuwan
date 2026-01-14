@@ -89,12 +89,13 @@ export const PhotoGallery = () => {
     }
   }, [likes]);
 
+  // Soft pink, blue, gold colors for confetti
   const triggerConfetti = () => {
     confetti({
-      particleCount: 80,
+      particleCount: 40,
       spread: 60,
       origin: { y: 0.7 },
-      colors: ['#D4A853', '#C17B7B', '#E8A4A4', '#FF7F50', '#FFD700'],
+      colors: ['#E8A4B8', '#8BB8D0', '#D4A853', '#F0C987', '#B8D4E3'],
     });
   };
 
