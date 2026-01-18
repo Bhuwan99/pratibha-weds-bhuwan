@@ -1,13 +1,24 @@
 import { CountdownTimer } from './CountdownTimer';
+import { useEffect, useState } from 'react';
 import heroImage from '@/assets/hero.jpg';
 
 export const HeroSection = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = heroImage;
+    img.onload = () => setImageLoaded(true);
+  }, []);
+
   return (
     <section 
       className="hero-bg flex flex-col items-center justify-center px-4 py-12 md:py-16"
       style={{ 
-        backgroundImage: `url(${heroImage})`,
-        backgroundPosition: 'calc(50% - 10px) center'
+        backgroundImage: imageLoaded ? `url(${heroImage})` : 'none',
+        backgroundPosition: 'calc(50% - 10px) center',
+        backgroundSize: 'cover',
+        backgroundAttachment: 'scroll'
       }}
     >
       {/* Content wrapper - sits above the overlay */}

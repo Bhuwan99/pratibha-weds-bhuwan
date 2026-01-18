@@ -50,6 +50,8 @@ const PersonCard = ({ name, role, emoji, parents, delay = '0', photo, flipPhoto 
               alt={name}
               className={`w-full h-full object-cover ${flipPhoto ? 'scale-x-[-1]' : ''}`}
               loading="lazy"
+              decoding="async"
+              fetchPriority="low"
             />
           </div>
         )}

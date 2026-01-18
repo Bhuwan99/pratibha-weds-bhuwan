@@ -201,6 +201,9 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    will-change: background-image;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
 
   .hero-bg::before {
@@ -215,6 +218,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    will-change: background-image;
+    image-rendering: -webkit-optimize-contrast;
   }
 
   .section-bg::before {

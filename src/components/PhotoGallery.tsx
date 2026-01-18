@@ -170,6 +170,8 @@ export const PhotoGallery = () => {
                     alt={image.alt}
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
                   />
                   
                   {/* Gradient overlay at bottom */}
