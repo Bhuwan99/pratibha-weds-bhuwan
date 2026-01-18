@@ -9,7 +9,6 @@ interface TimeLeft {
 }
 
 const WEDDING_DATE = new Date('2026-02-08T00:00:00');
-const CONFETTI_STORAGE_KEY = 'countdown_confetti_triggered';
 
 // Soft pink, blue, gold colors for confetti
 const CONFETTI_COLORS = ['#E8A4B8', '#8BB8D0', '#D4A853', '#F0C987', '#B8D4E3'];
@@ -44,42 +43,34 @@ export const CountdownTimer = () => {
   }, [calculateTimeLeft]);
 
   const triggerConfetti = () => {
-    // Check if confetti was already triggered
-    const alreadyTriggered = localStorage.getItem(CONFETTI_STORAGE_KEY);
-    
     setIsAnimating(true);
     setTimeout(() => setIsAnimating(false), 500);
 
-    if (!alreadyTriggered) {
-      // Mark as triggered
-      localStorage.setItem(CONFETTI_STORAGE_KEY, 'true');
-      
-      // Center burst
+    // Center burst
+    confetti({
+      particleCount: 40,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: CONFETTI_COLORS,
+    });
+
+    // Side bursts
+    setTimeout(() => {
       confetti({
-        particleCount: 40,
-        spread: 70,
-        origin: { y: 0.6 },
+        particleCount: 25,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
         colors: CONFETTI_COLORS,
       });
-
-      // Side bursts
-      setTimeout(() => {
-        confetti({
-          particleCount: 25,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0 },
-          colors: CONFETTI_COLORS,
-        });
-        confetti({
-          particleCount: 25,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1 },
-          colors: CONFETTI_COLORS,
-        });
-      }, 200);
-    }
+      confetti({
+        particleCount: 25,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: CONFETTI_COLORS,
+      });
+    }, 200);
   };
 
   const formatNumber = (num: number) => String(num).padStart(2, '0');
@@ -92,46 +83,42 @@ export const CountdownTimer = () => {
       }`}
       aria-label="Tap to celebrate! Countdown to wedding"
     >
-      {/* Continuous bounce animation wrapper */}
+      {/* Sleek countdown container */}
       <div className="countdown-bounce">
-        <div className="card-festive countdown-pulse p-5 md:p-8">
-          <p className="text-center text-muted-foreground text-sm mb-4 font-medium">
-            ✨ Tap to celebrate! ✨
-          </p>
-          
-          <div className="flex justify-center gap-2 md:gap-4">
-            <div className="countdown-box">
-              <span className="font-display text-2xl md:text-4xl font-bold text-gold-shimmer">
+        <div className="countdown-sleek countdown-pulse">
+          <div className="flex justify-center items-center gap-2 md:gap-3">
+            <div className="countdown-unit-sleek">
+              <span className="countdown-number-sleek" style={{ fontFamily: "'Lora', serif" }}>
                 {formatNumber(timeLeft.days)}
               </span>
-              <span className="text-xs md:text-sm text-muted-foreground mt-1">Days</span>
+              <span className="countdown-label-sleek" style={{ fontFamily: "'Lora', serif" }}>Days</span>
             </div>
             
-            <span className="font-display text-2xl md:text-4xl font-bold text-primary self-center">:</span>
+            <span className="countdown-separator">:</span>
             
-            <div className="countdown-box">
-              <span className="font-display text-2xl md:text-4xl font-bold text-gold-shimmer">
+            <div className="countdown-unit-sleek">
+              <span className="countdown-number-sleek" style={{ fontFamily: "'Lora', serif" }}>
                 {formatNumber(timeLeft.hours)}
               </span>
-              <span className="text-xs md:text-sm text-muted-foreground mt-1">Hours</span>
+              <span className="countdown-label-sleek" style={{ fontFamily: "'Lora', serif" }}>Hours</span>
             </div>
             
-            <span className="font-display text-2xl md:text-4xl font-bold text-primary self-center">:</span>
+            <span className="countdown-separator">:</span>
             
-            <div className="countdown-box">
-              <span className="font-display text-2xl md:text-4xl font-bold text-gold-shimmer">
+            <div className="countdown-unit-sleek">
+              <span className="countdown-number-sleek" style={{ fontFamily: "'Lora', serif" }}>
                 {formatNumber(timeLeft.minutes)}
               </span>
-              <span className="text-xs md:text-sm text-muted-foreground mt-1">Mins</span>
+              <span className="countdown-label-sleek" style={{ fontFamily: "'Lora', serif" }}>Mins</span>
             </div>
             
-            <span className="font-display text-2xl md:text-4xl font-bold text-primary self-center">:</span>
+            <span className="countdown-separator">:</span>
             
-            <div className="countdown-box">
-              <span className="font-display text-2xl md:text-4xl font-bold text-gold-shimmer">
+            <div className="countdown-unit-sleek">
+              <span className="countdown-number-sleek" style={{ fontFamily: "'Lora', serif" }}>
                 {formatNumber(timeLeft.seconds)}
               </span>
-              <span className="text-xs md:text-sm text-muted-foreground mt-1">Secs</span>
+              <span className="countdown-label-sleek" style={{ fontFamily: "'Lora', serif" }}>Secs</span>
             </div>
           </div>
         </div>

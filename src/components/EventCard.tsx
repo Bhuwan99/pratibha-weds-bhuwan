@@ -9,6 +9,7 @@ interface EventCardProps {
   venueName: string;
   venueAddress: string;
   delay?: string;
+  mapsUrl?: string;
 }
 
 export const EventCard = ({ 
@@ -18,7 +19,8 @@ export const EventCard = ({
   description, 
   venueName,
   venueAddress,
-  delay = '0' 
+  delay = '0',
+  mapsUrl
 }: EventCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -42,9 +44,8 @@ export const EventCard = ({
   }, []);
 
   const handleGetDirections = () => {
-    const encodedAddress = encodeURIComponent(venueAddress);
-    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-    window.open(mapsUrl, '_blank', 'noopener,noreferrer');
+    const url = mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venueAddress)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (

@@ -1,10 +1,10 @@
 import { EventCard } from './EventCard';
-import eventsBackground from '@/assets/couple-2.jpg';
+import eventsBackground from '@/assets/background-1.jpg';
 
 export const EventsSection = () => {
   return (
     <section 
-      className="section-bg py-12 md:py-16 px-4"
+      className="section-bg curved-finish py-12 md:py-16 px-4"
       style={{ backgroundImage: `url(${eventsBackground})` }}
     >
       <div className="relative z-10 max-w-2xl mx-auto">
@@ -26,8 +26,9 @@ export const EventsSection = () => {
             title="Tilak & Sangeet"
             date="5th February 2026"
             description="Naachna gaana aur khushiyan! 💃🕺"
-            venueName="Grand Celebration Hall"
-            venueAddress="123 Wedding Avenue, Sector 21, New Delhi, 110001"
+            venueName="Ramayan Banquet, The Meridian"
+            venueAddress="4TH FLOOR, opposite Big Bazaar, Baguiati, Kolkata - 700059"
+            mapsUrl="https://maps.app.goo.gl/Ad9vUUMzNpoxCFsNA"
             delay="0.1"
           />
           
@@ -36,8 +37,9 @@ export const EventsSection = () => {
             title="Wedding"
             date="8th February 2026"
             description="Shaadi ka din! ❤️"
-            venueName="Royal Palace Gardens"
-            venueAddress="456 Marriage Lane, Civil Lines, New Delhi, 110054"
+            venueName="Barsana Banquet"
+            venueAddress="SHRACHI SYNTHESIS BUSINESS PARK, Action Area I, Newtown, New Town, Kolkata - 700161"
+            mapsUrl="https://maps.app.goo.gl/bXYsENMJ7XnWXWdp9"
             delay="0.2"
           />
         </div>

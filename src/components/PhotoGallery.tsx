@@ -13,23 +13,21 @@ import Autoplay from 'embla-carousel-autoplay';
 // 3. Replace the images in the GALLERY_IMAGES array below
 // =====================================================
 
-import couple1 from '@/assets/couple-1.jpg';
-import couple2 from '@/assets/couple-2.jpg';
-import couple3 from '@/assets/couple-3.jpg';
-import couple4 from '@/assets/couple-4.jpg';
-import couple5 from '@/assets/couple-5.jpg';
-import couple6 from '@/assets/couple-6.jpg';
+import gallery1 from '@/assets/gallery-1.jpg';
+import gallery2 from '@/assets/gallery-2.jpg';
+import gallery3 from '@/assets/gallery-3.jpg';
+import gallery4 from '@/assets/gallery-4.jpg';
+import gallery6 from '@/assets/gallery-6.jpg';
 
 // =====================================================
 // 🖼️ GALLERY IMAGES - Replace these with your photos!
 // =====================================================
 const GALLERY_IMAGES = [
-  { id: 1, src: couple1, alt: 'Couple Photo 1' },
-  { id: 2, src: couple2, alt: 'Couple Photo 2' },
-  { id: 3, src: couple3, alt: 'Couple Photo 3' },
-  { id: 4, src: couple4, alt: 'Couple Photo 4' },
-  { id: 5, src: couple5, alt: 'Couple Photo 5' },
-  { id: 6, src: couple6, alt: 'Couple Photo 6' },
+  { id: 1, src: gallery1, alt: 'Couple Photo 1' },
+  { id: 2, src: gallery2, alt: 'Couple Photo 2' },
+  { id: 3, src: gallery3, alt: 'Couple Photo 3' },
+  { id: 4, src: gallery4, alt: 'Couple Photo 4' },
+  { id: 6, src: gallery6, alt: 'Couple Photo 6' },
 ];
 
 const STORAGE_KEY = 'wedding_photo_likes';
@@ -65,10 +63,9 @@ const getInitialLikes = (): PhotoLikes => {
 export const PhotoGallery = () => {
   const [likes, setLikes] = useState<PhotoLikes>(getInitialLikes);
   const [animatingHeart, setAnimatingHeart] = useState<number | null>(null);
-  const [animatingCount, setAnimatingCount] = useState<number | null>(null);
 
   const autoplayPlugin = useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true })
+    Autoplay({ delay: 4000, stopOnInteraction: true, stopOnMouseEnter: false })
   );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -76,9 +73,40 @@ export const PhotoGallery = () => {
       loop: true, 
       align: 'center',
       containScroll: false,
+      dragFree: true,
+      slidesToScroll: 1,
+      watchDrag: true,
     },
     [autoplayPlugin.current]
   );
+
+  // Restart autoplay after manual interaction stops
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    let interactionTimeout: NodeJS.Timeout;
+
+    const handlePointerDown = () => {
+      autoplayPlugin.current?.stop();
+      clearTimeout(interactionTimeout);
+    };
+
+    const handlePointerUp = () => {
+      clearTimeout(interactionTimeout);
+      interactionTimeout = setTimeout(() => {
+        autoplayPlugin.current?.play();
+      }, 2000);
+    };
+
+    emblaApi.on('pointerDown', handlePointerDown);
+    emblaApi.on('pointerUp', handlePointerUp);
+
+    return () => {
+      clearTimeout(interactionTimeout);
+      emblaApi.off('pointerDown', handlePointerDown);
+      emblaApi.off('pointerUp', handlePointerUp);
+    };
+  }, [emblaApi]);
 
   // Save to localStorage whenever likes change
   useEffect(() => {
@@ -107,12 +135,11 @@ export const PhotoGallery = () => {
     setAnimatingHeart(photoId);
     setTimeout(() => setAnimatingHeart(null), 400);
 
-    if (isFirstLike) {
-      // First time liking - show confetti and increment
-      triggerConfetti();
-      setAnimatingCount(photoId);
-      setTimeout(() => setAnimatingCount(null), 300);
+    // Show confetti on every click
+    triggerConfetti();
 
+    if (isFirstLike) {
+      // First time liking - increment count
       setLikes(prev => ({
         ...prev,
         [photoId]: {
@@ -121,17 +148,16 @@ export const PhotoGallery = () => {
         },
       }));
     }
-    // If already liked, just bounce animation (no count change)
+    // If already liked, just bounce animation and confetti (no count change)
   }, [likes]);
 
   return (
-    <div className="w-full overflow-hidden">
-      <div ref={emblaRef} className="overflow-hidden touch-pan-x">
+    <div className="w-full overflow-hidden relative z-20">
+      <div ref={emblaRef} className="overflow-hidden touch-pan-x cursor-grab active:cursor-grabbing">
         <div className="flex">
           {GALLERY_IMAGES.map((image) => {
             const photoLike = likes[image.id] || { liked: false, count: 0 };
             const isLiked = photoLike.liked;
-            const likeCount = photoLike.count;
 
             return (
               <div
@@ -149,8 +175,8 @@ export const PhotoGallery = () => {
                   {/* Gradient overlay at bottom */}
                   <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/50 to-transparent" />
                   
-                  {/* Heart button and count */}
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  {/* Heart button */}
+                  <div className="absolute bottom-4 left-4">
                     <button
                       onClick={() => handleLike(image.id)}
                       className={`heart-button ${isLiked ? 'heart-liked' : ''} ${
@@ -164,17 +190,6 @@ export const PhotoGallery = () => {
                         }`}
                       />
                     </button>
-                    
-                    <div 
-                      className={`flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-full ${
-                        animatingCount === image.id ? 'count-pop' : ''
-                      }`}
-                    >
-                      <Heart className="w-4 h-4 text-rose fill-rose" />
-                      <span className="font-medium text-foreground">
-                        {likeCount}
-                      </span>
-                    </div>
                   </div>
                 </div>
               </div>

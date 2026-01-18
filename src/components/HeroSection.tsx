@@ -1,57 +1,66 @@
 import { CountdownTimer } from './CountdownTimer';
-import heroImage from '@/assets/couple-1.jpg';
+import heroImage from '@/assets/hero.jpg';
 
 export const HeroSection = () => {
   return (
     <section 
       className="hero-bg flex flex-col items-center justify-center px-4 py-12 md:py-16"
-      style={{ backgroundImage: `url(${heroImage})` }}
+      style={{ 
+        backgroundImage: `url(${heroImage})`,
+        backgroundPosition: 'calc(50% - 10px) center'
+      }}
     >
       {/* Content wrapper - sits above the overlay */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full">
-        {/* Logo */}
-        <div className="text-center mb-6 fade-in-up">
-          <h1 className="logo-text text-5xl md:text-7xl lg:text-8xl text-gold-shimmer">
-            PraBhu
-          </h1>
-        </div>
-        
-        {/* Sanskrit Line */}
-        <div className="text-center mb-2 fade-in-up delay-100">
-          <p className="font-display text-lg md:text-2xl text-foreground/90 tracking-wide">
-            परस्परं समर्पितौ
-          </p>
-        </div>
-        
-        {/* Hindi Meaning */}
-        <div className="text-center mb-10 fade-in-up delay-200">
-          <p className="text-sm md:text-base text-muted-foreground font-light">
-            एक-दूसरे को समर्पित
-          </p>
-        </div>
-        
-        {/* Decorative Line */}
-        <div className="flex items-center justify-center gap-4 mb-10 fade-in-up delay-200">
-          <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
-          <span className="text-2xl md:text-3xl">💍</span>
-          <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+        {/* Pratibha Weds Bhuwan */}
+        <div className="text-center mb-8 fade-in-up">
+          <div className="text-white" style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2)' }}>
+            <div className="text-5xl md:text-7xl lg:text-8xl font-light mb-2" style={{ fontFamily: "'Lora', serif", letterSpacing: '0.05em', lineHeight: '1.3', fontWeight: '300' }}>
+              Pratibha
+            </div>
+            <div className="text-white/90 my-3 text-2xl md:text-3xl lg:text-4xl font-light italic" style={{ fontFamily: "'Lora', serif", letterSpacing: '0.2em', fontWeight: '300' }}>
+              weds
+            </div>
+            <div className="text-5xl md:text-7xl lg:text-8xl font-light mt-2" style={{ fontFamily: "'Lora', serif", letterSpacing: '0.05em', lineHeight: '1.3', fontWeight: '300' }}>
+              Bhuwan
+            </div>
+          </div>
         </div>
         
         {/* Wedding Date */}
-        <p className="text-center text-foreground font-display font-medium text-xl md:text-2xl mb-8 fade-in-up delay-300">
+        <p className="text-center text-white/95 font-display font-light text-2xl md:text-3xl lg:text-4xl mb-8 fade-in-up delay-200" style={{ fontFamily: "'Lora', serif", letterSpacing: '0.1em', fontWeight: '300', textShadow: '0 2px 6px rgba(0, 0, 0, 0.3)' }}>
           8th February 2026
         </p>
         
         {/* Countdown */}
-        <div className="w-full max-w-lg fade-in-up delay-400">
+        <div className="w-full max-w-lg fade-in-up delay-300">
           <CountdownTimer />
         </div>
-        
-        {/* Scroll indicator */}
-        <div className="mt-12 flex flex-col items-center text-muted-foreground animate-bounce">
-          <span className="text-sm mb-2">Scroll karein</span>
-          <span className="text-2xl">👇</span>
-        </div>
+      </div>
+
+      {/* Scroll Down Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 fade-in-up delay-500">
+        <a 
+          href="#meet-the-couple" 
+          className="flex flex-col items-center text-white/80 hover:text-white transition-colors duration-300 group"
+          aria-label="Scroll down"
+        >
+          <div className="scroll-indicator">
+            <svg 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+              className="group-hover:translate-y-1 transition-transform duration-300"
+            >
+              <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg>
+          </div>
+        </a>
       </div>
     </section>
   );
