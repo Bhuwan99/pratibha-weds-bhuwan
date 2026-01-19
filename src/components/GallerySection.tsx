@@ -5,7 +5,7 @@ export const GallerySection = () => {
   return (
     <section 
       className="section-bg curved-finish py-12 md:py-16"
-      style={{ backgroundImage: `url(${galleryBackground})` }}
+      style={{ backgroundImage: `url(${galleryBackground})`, touchAction: 'pan-y pinch-zoom' }}
     >
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Section title */}

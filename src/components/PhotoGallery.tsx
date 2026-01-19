@@ -76,6 +76,8 @@ export const PhotoGallery = () => {
       dragFree: true,
       slidesToScroll: 1,
       watchDrag: true,
+      axis: 'x',
+      skipSnaps: false,
     },
     [autoplayPlugin.current]
   );
@@ -152,8 +154,8 @@ export const PhotoGallery = () => {
   }, [likes]);
 
   return (
-    <div className="w-full overflow-hidden relative z-20">
-      <div ref={emblaRef} className="overflow-hidden touch-pan-x cursor-grab active:cursor-grabbing">
+    <div className="w-full overflow-hidden relative z-20" style={{ touchAction: 'pan-y pinch-zoom' }}>
+      <div ref={emblaRef} className="overflow-hidden cursor-grab active:cursor-grabbing" style={{ touchAction: 'pan-x pan-y' }}>
         <div className="flex">
           {GALLERY_IMAGES.map((image) => {
             const photoLike = likes[image.id] || { liked: false, count: 0 };
