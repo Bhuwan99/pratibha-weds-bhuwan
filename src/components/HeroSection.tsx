@@ -1,6 +1,7 @@
 import { CountdownTimer } from './CountdownTimer';
 import { useEffect, useState } from 'react';
 import heroImage from '@/assets/hero.jpg';
+import prabhuLogoHero from '@/assets/prabhu-logo-hero.png';
 
 export const HeroSection = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -13,7 +14,7 @@ export const HeroSection = () => {
 
   return (
     <section 
-      className="hero-bg flex flex-col items-center justify-center px-4 py-12 md:py-16"
+      className="hero-bg flex flex-col items-center justify-center px-4 py-12 md:py-16 relative"
       style={{ 
         backgroundImage: imageLoaded ? `url(${heroImage})` : 'none',
         backgroundPosition: 'calc(50% - 10px) center',
@@ -21,6 +22,24 @@ export const HeroSection = () => {
         backgroundAttachment: 'scroll'
       }}
     >
+      {/* PraBhu Logo at Top - Outside centered content */}
+      <div 
+        className="absolute top-12 md:top-6 lg:top-8 z-20 fade-in-up"
+        style={{ 
+          left: 'calc(50% - 40px)',
+        }}
+      >
+        <img 
+          src={prabhuLogoHero} 
+          alt="PraBhu Logo" 
+          className="h-20 md:h-28 lg:h-32 w-auto"
+          style={{ 
+            filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4))',
+            opacity: 0.95
+          }}
+        />
+      </div>
+
       {/* Content wrapper - sits above the overlay */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full">
         {/* Pratibha Weds Bhuwan */}
